@@ -78,7 +78,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-            <Card className={`card-hover animate-slideInUp glass ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.1s", transitionDelay: "0.1s" }}>
+            <Card className={`card-hover animate-slideInUp ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.1s", transitionDelay: "0.1s" }}>
               <CardHeader className="pb-2">
                 <CardDescription>Participation Rate</CardDescription>
                 <CardTitle className="text-3xl">
@@ -88,11 +88,11 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="text-xs text-muted-foreground">17 of 25 participants completed</div>
                 <div className="mt-2 h-2 w-full bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary rounded-full animate-pulse" style={{ width: "68%" }}></div>
+                  <div className="h-full bg-primary rounded-full" style={{ width: "68%" }}></div>
                 </div>
               </CardContent>
             </Card>
-            <Card className={`card-hover animate-slideInUp glass ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.2s", transitionDelay: "0.2s" }}>
+            <Card className={`card-hover animate-slideInUp ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.2s", transitionDelay: "0.2s" }}>
               <CardHeader className="pb-2">
                 <CardDescription>Overall Satisfaction</CardDescription>
                 <CardTitle className="text-3xl">
@@ -109,7 +109,7 @@ export default function DashboardPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className={`card-hover animate-slideInUp glass ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.3s", transitionDelay: "0.3s" }}>
+            <Card className={`card-hover animate-slideInUp ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.3s", transitionDelay: "0.3s" }}>
               <CardHeader className="pb-2">
                 <CardDescription>Manager Support</CardDescription>
                 <CardTitle className="text-3xl">
@@ -126,7 +126,7 @@ export default function DashboardPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className={`card-hover animate-slideInUp glass ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.4s", transitionDelay: "0.4s" }}>
+            <Card className={`card-hover animate-slideInUp ${mounted ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.4s", transitionDelay: "0.4s" }}>
               <CardHeader className="pb-2">
                 <CardDescription>Role Clarity</CardDescription>
                 <CardTitle className="text-3xl">
@@ -147,7 +147,7 @@ export default function DashboardPage() {
           </div>
 
           <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8 animate-glow glass overflow-hidden">
+            <TabsList className="grid w-full grid-cols-3 mb-8 animate-glow overflow-hidden">
               <TabsTrigger value="overview" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Overview</TabsTrigger>
               <TabsTrigger value="insights" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Insights</TabsTrigger>
               <TabsTrigger value="actions" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">Action Items</TabsTrigger>
@@ -155,14 +155,14 @@ export default function DashboardPage() {
 
             <TabsContent value="overview" className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
-                <Card className="card-hover glass animate-slideInLeft">
+                <Card className="card-hover animate-slideInLeft">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
                         <CardTitle>Engagement Trends</CardTitle>
                         <CardDescription>Overall engagement score over time</CardDescription>
                       </div>
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <TrendingUp className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -191,14 +191,14 @@ export default function DashboardPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="card-hover glass animate-slideInRight">
+                <Card className="card-hover animate-slideInRight">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div>
                         <CardTitle>Question Breakdown</CardTitle>
                         <CardDescription>Average score by question category</CardDescription>
                       </div>
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-float">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <Star className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -228,7 +228,7 @@ export default function DashboardPage() {
                 </Card>
               </div>
 
-              <Card className="card-hover glass animate-slideInUp">
+              <Card className="card-hover animate-slideInUp">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
@@ -237,7 +237,7 @@ export default function DashboardPage() {
                         Have you received meaningful recognition for your work in the past week?
                       </CardDescription>
                     </div>
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-bounce-slow">
+                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                       <Users className="h-4 w-4 text-primary" />
                     </div>
                   </div>
@@ -260,14 +260,14 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="card-hover glass animate-slideInUp">
+              <Card className="card-hover animate-slideInUp">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle>Team Comparison</CardTitle>
                       <CardDescription>Average engagement score by team</CardDescription>
                     </div>
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
+                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                       <Users className="h-4 w-4 text-primary" />
                     </div>
                   </div>

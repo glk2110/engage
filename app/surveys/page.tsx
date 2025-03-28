@@ -27,7 +27,7 @@ export default function SurveysPage() {
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
         <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
           <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <MessageSquare className="h-6 w-6 text-primary animate-pulse" />
+            <MessageSquare className="h-6 w-6 text-primary" />
             <span className="text-gradient">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
@@ -44,47 +44,20 @@ export default function SurveysPage() {
         </div>
       </header>
       <main className="flex-1 py-6 md:py-8 lg:py-12 relative">
-        {/* Decorative background elements */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
-
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 animate-slideInUp">
             <div className="flex items-center gap-4">
-              <Link href="/">
-                <Button variant="outline" size="icon" className="h-8 w-8 hover:bg-primary/10 transition-all">
-                  <ArrowLeft className="h-4 w-4" />
-                  <span className="sr-only">Back</span>
-                </Button>
-              </Link>
               <div className="flex items-center gap-2">
                 <h1 className="text-2xl font-bold">Surveys</h1>
-                <div className="hidden md:flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 animate-pulse">
+                <div className="hidden md:flex items-center justify-center h-6 w-6 rounded-full bg-primary/10">
                   <Sparkles className="h-4 w-4 text-primary" />
                 </div>
               </div>
             </div>
-            {activeTab === "active" && (
-              <Link href="/surveys/create">
-                <Button className="group relative overflow-hidden bg-primary hover:bg-primary/90 transition-all duration-300 animate-pulse">
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary via-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <Plus className="mr-2 h-4 w-4 relative z-10" />
-                  <span className="relative z-10">New Survey</span>
-                </Button>
-              </Link>
-            )}
-            {activeTab === "templates" && (
-              <Button className="group relative overflow-hidden bg-primary hover:bg-primary/90 transition-all duration-300 animate-pulse">
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary via-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <Plus className="mr-2 h-4 w-4 relative z-10" />
-                <span className="relative z-10">Create Template</span>
-              </Button>
-            )}
           </div>
 
           <Tabs defaultValue="templates" className="w-full" onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-3 mb-8 animate-glow glass overflow-hidden">
+            <TabsList className="grid w-full grid-cols-3 mb-8 pb-8.5 animate-glow glass overflow-hidden">
               <TabsTrigger value="templates" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                 <div className="flex items-center gap-2">
                   <Wand2 className="h-4 w-4" />
@@ -114,17 +87,20 @@ export default function SurveysPage() {
                     <span>Quick start</span>
                   </Badge>
                 </div>
+                <Button className="group relative overflow-hidden bg-primary hover:bg-primary/90 transition-all duration-300 animate-pulse">
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-primary via-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <Plus className="mr-2 h-4 w-4 relative z-10" />
+                  <span className="relative z-10">Create Template</span>
+                </Button>
               </div>
 
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <Card
-                  className={`card-hover glass border-2 border-primary/50 relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ animationDelay: "0.1s", transitionDelay: "0.1s" }}
+                  className={`card-hover relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
                   onMouseEnter={() => setHoveredCard('engagement')}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-transparent transition-opacity duration-500 ${hoveredCard === 'engagement' ? 'opacity-100' : 'opacity-0'}`}></div>
-                  <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
 
                   <CardHeader className="pb-3 relative">
                     <div className="flex items-center justify-between">
@@ -148,7 +124,7 @@ export default function SurveysPage() {
                       </p>
                     </div>
                   </CardContent>
-                  <CardFooter className="flex justify-between pt-0 relative">
+                  <CardFooter className="flex justify-between pt-0 relative mt-auto">
                     <Button variant="ghost" size="sm" className="hover:bg-primary/10 transition-all">
                       <Copy className="mr-2 h-4 w-4" />
                       Duplicate
@@ -160,18 +136,16 @@ export default function SurveysPage() {
                 </Card>
 
                 <Card
-                  className={`card-hover glass relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ animationDelay: "0.2s", transitionDelay: "0.2s" }}
+                  className={`card-hover relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
                   onMouseEnter={() => setHoveredCard('manager')}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-transparent transition-opacity duration-500 ${hoveredCard === 'manager' ? 'opacity-100' : 'opacity-0'}`}></div>
-                  <div className="absolute -top-12 -right-12 w-24 h-24 bg-accent/20 rounded-full blur-xl"></div>
 
                   <CardHeader className="pb-3 relative">
                     <div className="flex items-center justify-between">
                       <CardTitle>Manager Effectiveness</CardTitle>
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-float">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <Users className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -188,7 +162,7 @@ export default function SurveysPage() {
                       </p>
                     </div>
                   </CardContent>
-                  <CardFooter className="flex justify-between pt-0 relative">
+                  <CardFooter className="flex justify-between pt-0 relative mt-auto">
                     <Button variant="ghost" size="sm" className="hover:bg-primary/10 transition-all">
                       <Copy className="mr-2 h-4 w-4" />
                       Duplicate
@@ -200,18 +174,16 @@ export default function SurveysPage() {
                 </Card>
 
                 <Card
-                  className={`card-hover glass relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ animationDelay: "0.3s", transitionDelay: "0.3s" }}
+                  className={`card-hover relative overflow-hidden animate-slideInUp ${mounted ? 'opacity-100' : 'opacity-0'}`}
                   onMouseEnter={() => setHoveredCard('pulse')}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-transparent transition-opacity duration-500 ${hoveredCard === 'pulse' ? 'opacity-100' : 'opacity-0'}`}></div>
-                  <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
 
                   <CardHeader className="pb-3 relative">
                     <div className="flex items-center justify-between">
                       <CardTitle>Pulse Check</CardTitle>
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-bounce-slow">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                         <Zap className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -226,7 +198,7 @@ export default function SurveysPage() {
                       <p className="mt-2">Measures current workload, team morale, and blockers.</p>
                     </div>
                   </CardContent>
-                  <CardFooter className="flex justify-between pt-0 relative">
+                  <CardFooter className="flex justify-between pt-0 relative mt-auto">
                     <Button variant="ghost" size="sm" className="hover:bg-primary/10 transition-all">
                       <Copy className="mr-2 h-4 w-4" />
                       Duplicate
@@ -248,7 +220,7 @@ export default function SurveysPage() {
                     <h3 className="text-xl font-bold">Custom Template Builder</h3>
                     <p className="text-muted-foreground">Create your own survey templates tailored to your organization's specific needs.</p>
                   </div>
-                  <Button variant="gradient" size="lg" className="animate-pulse">
+                  <Button size="lg" className="animate-pulse">
                     Try Template Builder
                   </Button>
                 </div>
@@ -299,7 +271,7 @@ export default function SurveysPage() {
                         <span className="font-medium text-gradient">68%</span>
                       </div>
                       <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-                        <div className="h-full bg-primary rounded-full animate-pulse" style={{ width: "68%" }}></div>
+                        <div className="h-full bg-primary rounded-full" style={{ width: "68%" }}></div>
                       </div>
                       <div className="text-xs text-muted-foreground">17 of 25 participants completed</div>
                     </div>

@@ -29,12 +29,12 @@ export default function TeamsPage() {
   )
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="border-b">
-        <div className="container flex h-16 items-center px-4 md:px-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
+      <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
+        <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
+          <Link href="/" className="flex items-center gap-2 font-semibold group">
             <MessageSquare className="h-6 w-6 text-primary" />
-            <span>Pulse</span>
+            <span className="text-gradient">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="/dashboard" className="text-sm font-medium hover:underline underline-offset-4">

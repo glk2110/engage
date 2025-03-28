@@ -147,7 +147,7 @@ export default function CreateSurveyPage() {
 
           {/* Progress Steps */}
           <div className="mb-8 animate-slideInUp" style={{ animationDelay: "0.1s" }}>
-            <div className="grid grid-cols-4 gap-2 w-full glass p-1 rounded-lg">
+            <div className="grid grid-cols-4 gap-2 w-full border rounded-lg p-1 bg-background">
               {steps.map((step, index) => (
                 <button
                   key={index}
@@ -161,7 +161,7 @@ export default function CreateSurveyPage() {
                   <div className={`flex items-center justify-center rounded-full h-8 w-8 mb-1 transition-all ${currentStep > index
                     ? 'bg-primary text-primary-foreground'
                     : currentStep === index
-                      ? 'bg-primary/20 text-primary animate-pulse'
+                      ? 'bg-primary/20 text-primary'
                       : 'bg-accent/10'
                     }`}>
                     {currentStep > index ? (
@@ -186,7 +186,7 @@ export default function CreateSurveyPage() {
             {/* Step 1: Survey Details */}
             {currentStep === 0 && (
               <div className="animate-fadeIn">
-                <Card className="card-hover glass relative overflow-hidden">
+                <Card className="card-hover relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -197,7 +197,7 @@ export default function CreateSurveyPage() {
                         </CardTitle>
                         <CardDescription>Configure the basic information for your survey</CardDescription>
                       </div>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 animate-pulse">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                         <Star className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -266,7 +266,7 @@ export default function CreateSurveyPage() {
             {/* Step 2: Questions */}
             {currentStep === 1 && (
               <div className="animate-fadeIn">
-                <Card className="card-hover glass relative overflow-hidden">
+                <Card className="card-hover relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -277,7 +277,7 @@ export default function CreateSurveyPage() {
                         </CardTitle>
                         <CardDescription>Review and customize your survey questions</CardDescription>
                       </div>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 animate-pulse">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                         <Sparkles className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -364,7 +364,7 @@ export default function CreateSurveyPage() {
             {/* Step 3: Participants */}
             {currentStep === 2 && (
               <div className="animate-fadeIn">
-                <Card className="card-hover glass relative overflow-hidden">
+                <Card className="card-hover relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -375,7 +375,7 @@ export default function CreateSurveyPage() {
                         </CardTitle>
                         <CardDescription>Select who should receive this survey</CardDescription>
                       </div>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 animate-pulse">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                         <Users className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -401,7 +401,7 @@ export default function CreateSurveyPage() {
                       </div>
                     </div>
 
-                    <div className="p-4 border rounded-lg bg-background/50 backdrop-blur animate-slideInUp" style={{ animationDelay: "0.2s" }}>
+                    <div className="p-4 border rounded-lg bg-background animate-slideInUp" style={{ animationDelay: "0.2s" }}>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
                           <Users className="h-4 w-4 text-primary" />
@@ -474,7 +474,7 @@ export default function CreateSurveyPage() {
             {/* Step 4: Settings */}
             {currentStep === 3 && (
               <div className="animate-fadeIn">
-                <Card className="card-hover glass relative overflow-hidden">
+                <Card className="card-hover relative overflow-hidden">
                   <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -485,7 +485,7 @@ export default function CreateSurveyPage() {
                         </CardTitle>
                         <CardDescription>Configure survey timing and delivery options</CardDescription>
                       </div>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 animate-pulse">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
                         <Calendar className="h-4 w-4 text-primary" />
                       </div>
                     </div>
@@ -523,7 +523,7 @@ export default function CreateSurveyPage() {
                       </div>
                     </div>
 
-                    <div className="p-4 border rounded-lg bg-background/50 backdrop-blur space-y-4 animate-slideInUp" style={{ animationDelay: "0.2s" }}>
+                    <div className="p-4 border rounded-lg bg-background animate-slideInUp" style={{ animationDelay: "0.2s" }}>
                       <h3 className="text-sm font-medium flex items-center gap-2">
                         <Bell className="h-4 w-4 text-primary" />
                         Reminders
@@ -546,7 +546,7 @@ export default function CreateSurveyPage() {
                       </div>
                     </div>
 
-                    <div className="p-4 border rounded-lg bg-background/50 backdrop-blur space-y-4 animate-slideInUp" style={{ animationDelay: "0.3s" }}>
+                    <div className="p-4 border rounded-lg bg-background animate-slideInUp" style={{ animationDelay: "0.3s" }}>
                       <h3 className="text-sm font-medium flex items-center gap-2">
                         <SendHorizontal className="h-4 w-4 text-primary" />
                         Delivery Options
