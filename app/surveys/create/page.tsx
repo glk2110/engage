@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import {
-  ArrowLeft, Calendar, Check, ChevronDown, ChevronUp, MessageSquare,
+  ArrowLeft, Calendar, Check, ChevronDown, ChevronUp,
   Plus, Trash2, Users, Sparkles, Star, Zap, FileSpreadsheet,
   MessageCircle, Settings, LucideWand2 as Wand2, Bell, SendHorizontal,
   Lightbulb, Award, CheckCircle2
@@ -23,6 +23,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { format } from "date-fns"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 export default function CreateSurveyPage() {
   const router = useRouter()
@@ -101,15 +102,15 @@ export default function CreateSurveyPage() {
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
         <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
           <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <MessageSquare className="h-6 w-6 text-primary animate-pulse" />
-            <span className="text-gradient">Pulse</span>
+            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
+            <span className="text-gradient text-xl font-bold">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link href="/dashboard" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
-              Dashboard
-            </Link>
-            <Link href="/surveys" className="text-sm font-medium text-primary hover:underline underline-offset-4 transition-colors">
+            <Link href="/surveys" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
               Surveys
+            </Link>
+            <Link href="/templates" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
+              Templates
             </Link>
             <Link href="/teams" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
               Teams
@@ -121,7 +122,6 @@ export default function CreateSurveyPage() {
         {/* Decorative background elements */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
 
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8 animate-slideInUp">

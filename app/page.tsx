@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, BarChart3, MessageSquare, Users, Sparkles, Zap, Star, Lightbulb } from "lucide-react"
+import { ArrowRight, BarChart3, Users, Sparkles, Zap, Star, Lightbulb } from "lucide-react"
+import Image from "next/image"
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
         <div className="container flex h-16 items-center justify-between px-4 md:px-6 mx-auto">
           <div className="flex items-center gap-2 animate-pulse">
-            <MessageSquare className="h-6 w-6 text-primary" />
+            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
             <span className="text-xl font-bold text-gradient">Pulse</span>
           </div>
           <nav className="hidden md:flex gap-6">
@@ -18,8 +19,8 @@ export default function Home() {
             <Link href="/surveys" className="text-sm font-medium hover:underline underline-offset-4 hover:text-primary transition-colors">
               Surveys
             </Link>
-            <Link href="/dashboard" className="text-sm font-medium hover:underline underline-offset-4 hover:text-primary transition-colors">
-              Dashboard
+            <Link href="/templates" className="text-sm font-medium hover:underline underline-offset-4 hover:text-primary transition-colors">
+              Templates
             </Link>
             <Link href="/teams" className="text-sm font-medium hover:underline underline-offset-4 hover:text-primary transition-colors">
               Teams
@@ -49,7 +50,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                    Engagement that <span className="text-gradient">works</span> where you do
+                    Engagement that <span className="text-gradient p-1">works</span> where you do
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Our conversational interface lives where people already work, powered by proven HR research, and
@@ -57,13 +58,13 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link href="/dashboard">
+                  <Link href="/surveys">
                     <Button size="lg" className="gap-1.5 bg-primary hover:bg-primary/80 shadow-lg animate-pulse">
-                      See the dashboard
+                      See surveys
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </Link>
-                  <Link href="/surveys">
+                  <Link href="/surveys/create">
                     <Button size="lg" variant="outline" className="transition-all hover:bg-primary/10 hover:border-primary">
                       Create a survey
                     </Button>
@@ -71,56 +72,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex items-center justify-center animate-slideInRight">
-                <div className="relative w-full max-w-[500px] aspect-video overflow-hidden rounded-xl border glass shadow-xl hover:shadow-2xl transition-all transform hover:-rotate-1">
+                <div className="relative w-full max-w-[500px] overflow-hidden rounded-xl glass shadow-xl hover:shadow-2xl transition-all transform hover:-rotate-1">
                   <div className="p-4 h-full flex flex-col">
-                    <div className="flex items-center gap-2 border-b pb-4">
-                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center animate-pulse">
-                        <MessageSquare className="h-4 w-4 text-primary" />
-                      </div>
-                      <div className="font-medium">Jessica from HR</div>
-                    </div>
-                    <div className="flex-1 py-4 space-y-4 overflow-auto">
-                      <div className="flex gap-2 animate-slideInLeft" style={{ animationDelay: "0.2s" }}>
-                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                          <MessageSquare className="h-4 w-4 text-primary" />
-                        </div>
-                        <div className="bg-muted/80 p-3 rounded-lg max-w-[80%] backdrop-blur">
-                          <p>
-                            Hi there! I'm Jessica from HR. We're running a quick engagement survey to understand how
-                            things are going. Do you have a moment to share your thoughts?
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-2 justify-end animate-slideInRight" style={{ animationDelay: "0.4s" }}>
-                        <div className="bg-primary p-3 rounded-lg max-w-[80%] text-primary-foreground">
-                          <p>Sure, I can do that now.</p>
-                        </div>
-                        <div className="h-8 w-8 rounded-full bg-background border flex items-center justify-center">
-                          <Users className="h-4 w-4" />
-                        </div>
-                      </div>
-                      <div className="flex gap-2 animate-slideInLeft" style={{ animationDelay: "0.6s" }}>
-                        <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                          <MessageSquare className="h-4 w-4 text-primary" />
-                        </div>
-                        <div className="bg-muted/80 p-3 rounded-lg max-w-[80%] backdrop-blur">
-                          <p>
-                            Great! On a scale of 1 to 5, how clearly do you understand what's expected of you at work?
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-2 justify-end animate-slideInRight" style={{ animationDelay: "0.8s" }}>
-                        <div className="bg-primary p-3 rounded-lg max-w-[80%] text-primary-foreground">
-                          <p>
-                            I'd say about a 4. Most things are clear, but sometimes priorities shift without much
-                            notice.
-                          </p>
-                        </div>
-                        <div className="h-8 w-8 rounded-full bg-background border flex items-center justify-center">
-                          <Users className="h-4 w-4" />
-                        </div>
-                      </div>
-                    </div>
+                    <Image src="/hero.png" alt="Pulse Hero" width={500} height={500} className="w-full h-auto" />
                   </div>
                 </div>
               </div>
@@ -148,7 +102,7 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4 card-hover p-6 rounded-xl border">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 animate-pulse">
-                  <MessageSquare className="h-6 w-6 text-primary" />
+                  <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold">Conversational Interface</h3>
@@ -170,7 +124,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col justify-center space-y-4 card-hover p-6 rounded-xl border">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 animate-bounce-slow">
-                  <Users className="h-6 w-6 text-primary" />
+                  <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold">Ready-Made Templates</h3>
@@ -187,7 +141,7 @@ export default function Home() {
         <div className="container flex flex-col gap-4 py-10 md:flex-row md:gap-8 md:py-12 mx-auto">
           <div className="flex-1 space-y-4">
             <div className="flex items-center gap-2">
-              <MessageSquare className="h-6 w-6 text-primary" />
+              <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
               <span className="text-xl font-bold text-gradient">Pulse</span>
             </div>
             <p className="text-sm text-muted-foreground">

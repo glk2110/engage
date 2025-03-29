@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { ArrowLeft, Download, MessageSquare, Plus, Search, Upload, Users } from "lucide-react"
+import { ArrowLeft, Download, Plus, Search, Upload, Users } from "lucide-react"
+import Image from "next/image"
 
 export default function TeamsPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -33,15 +34,15 @@ export default function TeamsPage() {
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
         <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
           <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <MessageSquare className="h-6 w-6 text-primary" />
-            <span className="text-gradient">Pulse</span>
+            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
+            <span className="text-gradient text-xl font-bold">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link href="/dashboard" className="text-sm font-medium hover:underline underline-offset-4">
-              Dashboard
-            </Link>
             <Link href="/surveys" className="text-sm font-medium hover:underline underline-offset-4">
               Surveys
+            </Link>
+            <Link href="/templates" className="text-sm font-medium hover:underline underline-offset-4">
+              Templates
             </Link>
             <Link href="/teams" className="text-sm font-medium text-primary hover:underline underline-offset-4">
               Teams
@@ -50,14 +51,10 @@ export default function TeamsPage() {
         </div>
       </header>
       <main className="flex-1 py-6 md:py-8 lg:py-12">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
         <div className="container px-4 md:px-6">
           <div className="flex items-center gap-4 mb-8">
-            <Link href="/">
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <ArrowLeft className="h-4 w-4" />
-                <span className="sr-only">Back</span>
-              </Button>
-            </Link>
             <h1 className="text-2xl font-bold">Teams</h1>
           </div>
 
@@ -67,7 +64,7 @@ export default function TeamsPage() {
               <Input
                 type="search"
                 placeholder="Search teams or managers..."
-                className="w-full pl-8"
+                className="w-full pl-8 bg-white"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -84,7 +81,7 @@ export default function TeamsPage() {
             </div>
           </div>
 
-          <Card>
+          <Card className="relative">
             <CardHeader>
               <CardTitle>Team Directory</CardTitle>
               <CardDescription>Manage your organization structure and team members</CardDescription>

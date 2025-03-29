@@ -6,14 +6,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
-  ArrowLeft, Calendar, Clock, Copy, Edit, MessageSquare, Plus, Trash2,
+  ArrowLeft, Calendar, Clock, Copy, Edit, Plus, Trash2,
   Sparkles, Star, TrendingUp, Award, LineChart, BarChart, CheckCircle2,
   Users, Wand2, Zap
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import Image from "next/image"
 
 export default function SurveysPage() {
-  const [activeTab, setActiveTab] = useState("templates")
+  const [activeTab, setActiveTab] = useState("active")
   const [mounted, setMounted] = useState(false)
   const [hoveredCard, setHoveredCard] = useState<string | null>(null)
 
@@ -27,15 +28,15 @@ export default function SurveysPage() {
       <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
         <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
           <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <MessageSquare className="h-6 w-6 text-primary" />
-            <span className="text-gradient">Pulse</span>
+            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
+            <span className="text-gradient text-xl font-bold">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link href="/dashboard" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
-              Dashboard
-            </Link>
             <Link href="/surveys" className="text-sm font-medium text-primary hover:underline underline-offset-4 transition-colors">
               Surveys
+            </Link>
+            <Link href="/templates" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
+              Templates
             </Link>
             <Link href="/teams" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
               Teams
@@ -44,6 +45,8 @@ export default function SurveysPage() {
         </div>
       </header>
       <main className="flex-1 py-6 md:py-8 lg:py-12 relative">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 animate-slideInUp">
             <div className="flex items-center gap-4">
@@ -56,14 +59,8 @@ export default function SurveysPage() {
             </div>
           </div>
 
-          <Tabs defaultValue="templates" className="w-full" onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-3 mb-8 pb-8.5 animate-glow glass overflow-hidden">
-              <TabsTrigger value="templates" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
-                <div className="flex items-center gap-2">
-                  <Wand2 className="h-4 w-4" />
-                  <span>Templates</span>
-                </div>
-              </TabsTrigger>
+          <Tabs defaultValue="active" className="w-full" onValueChange={setActiveTab}>
+            <TabsList className="grid w-full grid-cols-2 mb-8 pb-8.5 animate-glow glass overflow-hidden">
               <TabsTrigger value="active" className="transition-all data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                 <div className="flex items-center gap-2">
                   <Zap className="h-4 w-4" />
@@ -78,7 +75,7 @@ export default function SurveysPage() {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="templates" className="space-y-6">
+            <TabsContent value="templates" className="space-y-6 hidden">
               <div className="flex justify-between items-center animate-slideInUp">
                 <div className="flex items-center gap-2">
                   <h2 className="text-xl font-semibold">Survey Templates</h2>
@@ -209,22 +206,6 @@ export default function SurveysPage() {
                   </CardFooter>
                 </Card>
               </div>
-
-              <div className="mt-12 bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10 p-6 rounded-xl backdrop-blur-sm border border-primary/20 animate-slideInUp">
-                <div className="flex flex-col md:flex-row md:items-center gap-6">
-                  <div className="flex-1 space-y-2">
-                    <Badge variant="outline" className="bg-background/50 backdrop-blur">
-                      <Award className="h-3 w-3 text-primary mr-1" />
-                      <span>Pro Feature</span>
-                    </Badge>
-                    <h3 className="text-xl font-bold">Custom Template Builder</h3>
-                    <p className="text-muted-foreground">Create your own survey templates tailored to your organization's specific needs.</p>
-                  </div>
-                  <Button size="lg" className="animate-pulse">
-                    Try Template Builder
-                  </Button>
-                </div>
-              </div>
             </TabsContent>
 
             <TabsContent value="active" className="space-y-6">
@@ -239,8 +220,7 @@ export default function SurveysPage() {
               </div>
 
               <Card className="card-hover glass animate-slideInUp relative overflow-hidden">
-                <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-2">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <CardTitle>Q2 Engagement Survey</CardTitle>
@@ -252,69 +232,69 @@ export default function SurveysPage() {
                   </div>
                   <CardDescription>Engineering and Product teams</CardDescription>
                 </CardHeader>
-                <CardContent className="pb-3">
-                  <div className="space-y-6">
-                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4 text-sm">
-                      <div className="flex items-center px-3 py-2 rounded-md bg-background/50 backdrop-blur">
+                <CardContent className="py-2">
+                  <div className="space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-sm">
+                      <div className="flex items-center px-3 py-1.5 rounded-md bg-background/50 backdrop-blur">
                         <Calendar className="mr-2 h-4 w-4 text-primary" />
                         <span>Started: June 1, 2023</span>
                       </div>
-                      <div className="flex items-center px-3 py-2 rounded-md bg-background/50 backdrop-blur">
+                      <div className="flex items-center px-3 py-1.5 rounded-md bg-background/50 backdrop-blur">
                         <Clock className="mr-2 h-4 w-4 text-primary" />
                         <span>Due: June 15, 2023</span>
                       </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                       <div className="flex justify-between text-sm">
                         <span>Participation Rate</span>
-                        <span className="font-medium text-gradient">68%</span>
+                        <span className="font-medium ">68%</span>
                       </div>
                       <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                         <div className="h-full bg-primary rounded-full" style={{ width: "68%" }}></div>
                       </div>
                       <div className="text-xs text-muted-foreground">17 of 25 participants completed</div>
                     </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
-                        <Users className="h-3 w-3 mr-1 text-primary" />
-                        <span>Engineering</span>
+                    <div className="flex justify-between">
+                      <div className="flex flex-wrap gap-2">
+                        <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
+                          <Users className="h-3 w-3 mr-1 text-primary" />
+                          <span>Engineering</span>
+                        </div>
+                        <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
+                          <Users className="h-3 w-3 mr-1 text-primary" />
+                          <span>Product</span>
+                        </div>
+                        <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
+                          <Image src="/icon.png" alt="Pulse Logo" width={12} height={12} className="h-3 w-3 mr-1" />
+                          <span>Anonymous responses</span>
+                        </div>
                       </div>
-                      <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
-                        <Users className="h-3 w-3 mr-1 text-primary" />
-                        <span>Product</span>
-                      </div>
-                      <div className="text-xs bg-background/50 px-2 py-1 rounded-full flex items-center">
-                        <MessageSquare className="h-3 w-3 mr-1 text-primary" />
-                        <span>6 questions</span>
-                      </div>
+                      <Link href={`/survey/q2-engagement`}>
+                        <Button size="sm" className="transition-all">
+                          <BarChart className="mr-2 h-4 w-4" />
+                          View Results
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter className="flex justify-between pt-0">
-                  <Button variant="outline" size="sm" className="hover:bg-primary/10 transition-all">
-                    <Edit className="mr-2 h-4 w-4" />
-                    Edit
-                  </Button>
-                  <Link href="/dashboard">
-                    <Button size="sm" className="bg-primary hover:bg-primary/80 transition-all">View Results</Button>
-                  </Link>
-                </CardFooter>
               </Card>
 
-              <div className="text-center py-8 animate-slideInUp">
-                <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-background/50 mb-4 animate-float">
-                  <Plus className="h-10 w-10 text-primary/70" />
+              {false && (
+                <div className="text-center py-8 animate-slideInUp">
+                  <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-background/50 mb-4 animate-float">
+                    <Plus className="h-10 w-10 text-primary/70" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-2">Start a New Survey</h3>
+                  <p className="text-muted-foreground max-w-md mx-auto mb-6">
+                    Launch a new survey to gather valuable feedback from your team and drive impactful decisions.
+                  </p>
+                  <Link href="/surveys/create">
+                    <Button variant="gradient" size="lg" className="animate-pulse">Create New Survey</Button>
+                  </Link>
                 </div>
-                <h3 className="text-xl font-medium mb-2">Start a New Survey</h3>
-                <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                  Launch a new survey to gather valuable feedback from your team and drive impactful decisions.
-                </p>
-                <Link href="/surveys/create">
-                  <Button variant="gradient" size="lg" className="animate-pulse">Create New Survey</Button>
-                </Link>
-              </div>
+              )}
             </TabsContent>
 
             <TabsContent value="completed" className="space-y-6">
@@ -330,7 +310,7 @@ export default function SurveysPage() {
 
               <Card className="card-hover glass animate-slideInUp relative overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-2">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <CardTitle>Q1 Engagement Survey</CardTitle>
@@ -342,14 +322,14 @@ export default function SurveysPage() {
                   </div>
                   <CardDescription>All departments</CardDescription>
                 </CardHeader>
-                <CardContent className="pb-3">
-                  <div className="space-y-6">
-                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4 text-sm">
-                      <div className="flex items-center px-3 py-2 rounded-md bg-background/50 backdrop-blur">
+                <CardContent className="py-2">
+                  <div className="space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-2 text-sm">
+                      <div className="flex items-center px-3 py-1.5 rounded-md bg-background/50 backdrop-blur">
                         <Calendar className="mr-2 h-4 w-4 text-primary" />
                         <span>March 1 - March 15, 2023</span>
                       </div>
-                      <div className="flex items-center px-3 py-2 rounded-md bg-background/50 backdrop-blur">
+                      <div className="flex items-center px-3 py-1.5 rounded-md bg-background/50 backdrop-blur">
                         <CheckCircle2 className="mr-2 h-4 w-4 text-green-500" />
                         <span className="font-medium">92% participation</span>
                       </div>
@@ -366,32 +346,31 @@ export default function SurveysPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 pt-2">
-                      <div className="bg-background/50 p-3 rounded-lg text-center">
+                    <div className="grid grid-cols-3 gap-2 pt-1">
+                      <div className="bg-background/50 p-2 rounded-lg text-center">
                         <div className="text-sm text-muted-foreground">Engagement</div>
                         <div className="text-xl font-bold text-gradient">3.8</div>
-                        <div className="text-xs text-muted-foreground mt-1">+0.2</div>
+                        <div className="text-xs text-muted-foreground">+0.2</div>
                       </div>
-                      <div className="bg-background/50 p-3 rounded-lg text-center">
+                      <div className="bg-background/50 p-2 rounded-lg text-center">
                         <div className="text-sm text-muted-foreground">Responses</div>
                         <div className="text-xl font-bold text-gradient">46</div>
-                        <div className="text-xs text-muted-foreground mt-1">92%</div>
+                        <div className="text-xs text-muted-foreground">92%</div>
                       </div>
-                      <div className="bg-background/50 p-3 rounded-lg text-center">
+                      <div className="bg-background/50 p-2 rounded-lg text-center">
                         <div className="text-sm text-muted-foreground">Questions</div>
                         <div className="text-xl font-bold text-gradient">6</div>
-                        <div className="text-xs text-muted-foreground mt-1">Standard</div>
+                        <div className="text-xs text-muted-foreground">Standard</div>
                       </div>
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter className="flex justify-between pt-0">
-                  <Button variant="ghost" size="sm" className="hover:bg-destructive/10 hover:text-destructive transition-all">
-                    <Trash2 className="mr-2 h-4 w-4" />
-                    Delete
-                  </Button>
-                  <Link href="/dashboard">
-                    <Button size="sm" className="bg-primary hover:bg-primary/80 transition-all">View Results</Button>
+                <CardFooter className="flex justify-end pt-0">
+                  <Link href={`/survey/manager-effectiveness`}>
+                    <Button size="sm" className="hover:bg-primary/10 transition-all">
+                      <BarChart className="mr-2 h-4 w-4 text-primary" />
+                      View Results
+                    </Button>
                   </Link>
                 </CardFooter>
               </Card>

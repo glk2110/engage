@@ -25,7 +25,7 @@ export default function DashboardPage() {
         <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
           <Link href="/" className="flex items-center gap-2 font-semibold group">
             <MessageSquare className="h-6 w-6 text-primary animate-pulse" />
-            <span className="text-gradient">Pulse</span>
+            <span className="text-gradient text-xl font-bold">Pulse</span>
           </Link>
           <nav className="ml-auto flex gap-4 sm:gap-6">
             <Link href="/dashboard" className="text-sm font-medium text-primary hover:underline underline-offset-4 transition-colors">
@@ -472,4 +472,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-

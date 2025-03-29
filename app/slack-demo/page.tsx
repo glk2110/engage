@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { MessageSquare, Send, User } from "lucide-react"
+import { Send, User } from "lucide-react"
+import Image from "next/image"
 
 export default function SlackDemoPage() {
   const [messages, setMessages] = useState([
@@ -79,7 +80,7 @@ export default function SlackDemoPage() {
         <CardHeader className="border-b">
           <div className="flex items-center gap-2">
             <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-              <MessageSquare className="h-5 w-5 text-primary" />
+              <Image src="/icon.png" alt="Pulse Logo" width={20} height={20} className="h-5 w-5 text-primary" />
             </div>
             <div>
               <CardTitle>Jessica (HR Consultant)</CardTitle>
@@ -94,7 +95,7 @@ export default function SlackDemoPage() {
                 <div className="flex gap-2 max-w-[80%]">
                   {message.sender === "bot" && (
                     <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MessageSquare className="h-4 w-4 text-primary" />
+                      <Image src="/icon.png" alt="Pulse Logo" width={16} height={16} className="h-4 w-4 text-primary" />
                     </div>
                   )}
                   <div>
@@ -108,7 +109,7 @@ export default function SlackDemoPage() {
                   </div>
                   {message.sender === "user" && (
                     <div className="h-8 w-8 rounded-full bg-background border flex items-center justify-center flex-shrink-0">
-                      <User className="h-4 w-4" />
+                      <Image src="/icon.png" alt="Pulse Logo" width={16} height={16} className="h-4 w-4 text-primary" />
                     </div>
                   )}
                 </div>
