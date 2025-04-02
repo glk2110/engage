@@ -31,12 +31,20 @@ export default function CreateSurveyPage() {
   const [endDate, setEndDate] = useState<Date>()
   const [mounted, setMounted] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
+  const [selectedTemplate, setSelectedTemplate] = useState("engagement")
+  const [showAIPrompt, setShowAIPrompt] = useState(false)
   const totalSteps = 4
 
   // Used for staggered animations
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // Handle template selection change
+  const handleTemplateChange = (value: string) => {
+    setSelectedTemplate(value)
+    setShowAIPrompt(value === "ai-builder")
+  }
 
   const questions = [
     {
@@ -204,6 +212,48 @@ export default function CreateSurveyPage() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid gap-4 animate-slideInUp" style={{ animationDelay: "0.1s" }}>
+                      <div className="relative">
+                        <Label htmlFor="template" className="text-sm font-medium">
+                          Select Template
+                        </Label>
+                        <Select defaultValue="engagement" onValueChange={handleTemplateChange}>
+                          <SelectTrigger id="template" className="mt-1.5 bg-background/50 backdrop-blur border-primary/20 focus:border-primary transition-all">
+                            <SelectValue placeholder="Select a template" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-background/80 backdrop-blur border-primary/20">
+                            <SelectItem value="engagement">Employee Engagement</SelectItem>
+                            <SelectItem value="satisfaction">Employee Satisfaction</SelectItem>
+                            <SelectItem value="onboarding">Onboarding Experience</SelectItem>
+                            <SelectItem value="exit">Exit Interview</SelectItem>
+                            <SelectItem value="pulse">Weekly Pulse Check</SelectItem>
+                            <SelectItem value="ai-builder" className="text-primary font-medium">
+                              <div className="flex items-center">
+                                <Wand2 className="h-4 w-4 mr-2 text-primary" />
+                                AI Template Builder
+                              </div>
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <div className="text-xs text-muted-foreground mt-1">Choose from your saved templates or create a new one with AI</div>
+                      </div>
+
+                      {showAIPrompt && (
+                        <div className="animate-fadeIn bg-primary/5 rounded-lg p-4 border border-primary/20">
+                          <Label htmlFor="ai-prompt" className="text-sm font-medium flex items-center gap-2">
+                            <Sparkles className="h-4 w-4 text-primary" />
+                            Describe what you want to learn
+                          </Label>
+                          <Textarea
+                            id="ai-prompt"
+                            placeholder="Example: I want to understand how our remote employees feel about work-life balance and their connection to the team"
+                            className="mt-1.5 min-h-[100px] bg-background/50 backdrop-blur border-primary/20 focus:border-primary transition-all"
+                          />
+                          <div className="flex items-center justify-between mt-3">
+                            <div className="text-xs text-muted-foreground">Our AI will generate relevant questions based on your description. Click continue to review questions.</div>
+                          </div>
+                        </div>
+                      )}
+
                       <div className="relative">
                         <Label htmlFor="name" className="text-sm font-medium">
                           Survey Name <span className="text-sm text-red-500">*</span>
