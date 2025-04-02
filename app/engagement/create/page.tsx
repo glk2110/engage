@@ -24,6 +24,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 import { format } from "date-fns"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
+import AppLayout from "@/components/AppLayout"
 
 export default function CreateSurveyPage() {
   const router = useRouter()
@@ -87,7 +88,7 @@ export default function CreateSurveyPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    router.push("/surveys?tab=active")
+    router.push("/dashboard?tab=surveys")
   }
 
   const nextStep = () => {
@@ -106,35 +107,12 @@ export default function CreateSurveyPage() {
   ]
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
-      <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
-        <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
-          <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
-            <span className="text-gradient text-xl font-bold">Pulse</span>
-          </Link>
-          <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link href="/surveys" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
-              Surveys
-            </Link>
-            <Link href="/templates" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
-              Templates
-            </Link>
-            <Link href="/teams" className="text-sm font-medium hover:text-primary hover:underline underline-offset-4 transition-colors">
-              Teams
-            </Link>
-          </nav>
-        </div>
-      </header>
-      <main className="flex-1 py-6 md:py-8 lg:py-12 relative">
-        {/* Decorative background elements */}
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
-
-        <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8 animate-slideInUp">
-            <div className="flex items-center gap-2">
-              <Link href="/surveys">
+    <AppLayout>
+      <div className="flex flex-col h-full bg-gradient-to-br from-background via-primary/5 to-accent/5">
+        <header className="border-b px-6 py-4 bg-background/50 backdrop-blur">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard?tab=surveys">
                 <Button variant="outline" size="icon" className="h-8 w-8 hover:bg-primary/10 transition-all">
                   <ArrowLeft className="h-4 w-4" />
                   <span className="sr-only">Back</span>
@@ -152,7 +130,8 @@ export default function CreateSurveyPage() {
               <span>Engagement Template</span>
             </Badge>
           </div>
-
+        </header>
+        <main className="flex-1 p-6 overflow-auto">
           {/* Progress Steps */}
           <div className="mb-8 animate-slideInUp" style={{ animationDelay: "0.1s" }}>
             <div className="grid grid-cols-4 gap-2 w-full border rounded-lg p-1 bg-background">
@@ -295,7 +274,7 @@ export default function CreateSurveyPage() {
                     <Button
                       variant="outline"
                       type="button"
-                      onClick={() => router.push("/surveys")}
+                      onClick={() => router.push("/dashboard?tab=surveys")}
                       className="hover:bg-primary/10 hover:border-primary transition-all"
                     >
                       Cancel
@@ -641,7 +620,7 @@ export default function CreateSurveyPage() {
                       <Button
                         variant="outline"
                         type="button"
-                        onClick={() => router.push("/surveys")}
+                        onClick={() => router.push("/dashboard?tab=surveys")}
                         className="hover:bg-destructive/10 hover:text-destructive transition-all"
                       >
                         Cancel
@@ -669,9 +648,9 @@ export default function CreateSurveyPage() {
               </div>
             )}
           </form>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </AppLayout>
   )
 }
 

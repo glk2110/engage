@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { ArrowLeft, Download, Plus, Search, Upload, Users } from "lucide-react"
 import Image from "next/image"
+import AppLayout from "@/components/AppLayout"
 
 export default function TeamsPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -30,34 +31,20 @@ export default function TeamsPage() {
   )
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
-      <header className="sticky top-0 z-40 w-full border-b backdrop-blur bg-background/50">
-        <div className="container flex h-16 items-center px-4 md:px-6 mx-auto">
-          <Link href="/" className="flex items-center gap-2 font-semibold group">
-            <Image src="/icon.png" alt="Pulse Logo" width={24} height={24} className="h-6 w-6" />
-            <span className="text-gradient text-xl font-bold">Pulse</span>
-          </Link>
-          <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link href="/surveys" className="text-sm font-medium hover:underline underline-offset-4">
-              Surveys
-            </Link>
-            <Link href="/templates" className="text-sm font-medium hover:underline underline-offset-4">
-              Templates
-            </Link>
-            <Link href="/teams" className="text-sm font-medium text-primary hover:underline underline-offset-4">
-              Teams
-            </Link>
-          </nav>
-        </div>
-      </header>
-      <main className="flex-1 py-6 md:py-8 lg:py-12">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
-        <div className="container px-4 md:px-6">
-          <div className="flex items-center gap-4 mb-8">
+    <AppLayout>
+      <div className="flex flex-col h-full bg-gradient-to-br from-background via-primary/5 to-accent/5">
+        <header className="border-b px-6 py-4 bg-background/50 backdrop-blur">
+          <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">Teams</h1>
+            <div className="flex items-center gap-4">
+              <Button className="bg-primary text-white hover:bg-primary/90 transition-all">
+                <Plus className="h-4 w-4 mr-2" />
+                Add Team
+              </Button>
+            </div>
           </div>
-
+        </header>
+        <main className="flex-1 p-6 overflow-auto">
           <div className="flex flex-col md:flex-row gap-4 mb-8 justify-between">
             <div className="relative w-full md:w-96">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -73,10 +60,6 @@ export default function TeamsPage() {
               <Button variant="outline">
                 <Upload className="mr-2 h-4 w-4" />
                 Import HRIS Data
-              </Button>
-              <Button>
-                <Plus className="mr-2 h-4 w-4" />
-                Add Team
               </Button>
             </div>
           </div>
@@ -137,9 +120,9 @@ export default function TeamsPage() {
               </Button>
             </CardFooter>
           </Card>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </AppLayout>
   )
 }
 
